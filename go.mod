@@ -2,7 +2,7 @@ module example.com/sqlstreams-quickstart
 
 go 1.27.0
 
-require github.com/allegedlyreliable/sqlstreams v0.1.1
+require github.com/allegedlyreliable/sqlstreams v0.1.5
 
 require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect

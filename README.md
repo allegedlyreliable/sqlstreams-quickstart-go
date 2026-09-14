@@ -1,6 +1,6 @@
 # SQLStreams quickstart (Go)
 
-The finished result of the [SQLStreams quickstart](https://sqlstreams.dev/quickstart/):
+The finished result of the [SQLStreams quickstart](https://sqlstreams.io/quickstart/):
 a producer and a consumer over one stream in your Postgres database.
 
 ## Prerequisites
