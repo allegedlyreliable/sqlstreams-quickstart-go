@@ -7,14 +7,14 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/allegedlyreliable/sqlstreams/client"
+	sqlstreams "github.com/allegedlyreliable/sqlstreams/client"
 )
 
-type WelcomeEmail struct {
+type WelcomeEmailV1 struct {
 	UserId string `json:"user_id"`
 }
 
-func (WelcomeEmail) SchemaVersion() int { return 1 } // increment on breaking changes
+func (WelcomeEmailV1) SchemaVersion() int { return 1 } // increment on breaking changes
 
 func main() {
 	if err := run(); err != nil {
@@ -38,7 +38,7 @@ func run() error {
 		return err
 	}
 
-	emails := client.Stream[WelcomeEmail]("signup.welcome-email")
+	emails := client.Stream[WelcomeEmailV1]("signup.welcome-email")
 	registered, err := emails.Get(ctx)
 	if err != nil {
 		return err
@@ -56,7 +56,7 @@ func run() error {
 	return consumer.Consume(ctx, receiveEmail, nil)
 }
 
-func receiveEmail(ctx context.Context, email *WelcomeEmail) error {
+func receiveEmail(ctx context.Context, email *WelcomeEmailV1) error {
 	fmt.Printf("received welcome email request for %s\n", email.UserId)
 	return nil
 }
